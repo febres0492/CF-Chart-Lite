@@ -1,0 +1,8 @@
+{
+    "liveServer.settings.port": 5502,
+    "editor.wordWrap": "off",
+    "[javascript]": {
+        "editor.wordWrap": "off"
+    },
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
+}
