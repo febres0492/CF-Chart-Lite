@@ -134,51 +134,6 @@ class CFchart {
             return str
         }
         const utilities = {
-            // 'addIndicator':(indicator)=>{
-            //     this.indicators.list[indicator['nameId']] = indicator
-            //     if(indicator.inputs.level === 'upper'){
-            //         this.U.addStudyInfoBox(indicator)
-            //         indicator.ctx = this.canvas_main.ctx
-            //         indicator.chartHeigh = this.chart_height
-            //     }
-            //     if(indicator.inputs.level === 'lower'){
-            //         this.U.ajustChartSizes()
-            //         this.U.createLowerIndicatorCanvas(indicator)
-            //         indicator.ctx = this[`canvas_${indicator.nameId}`].ctx
-            //         indicator.chartHeigh = this.lower_chart_height
-            //         this.U.setDimentions()
-            //     }
-            //     this.indicators.updatePlots()
-            // },
-            // 'addStudyInfoBox':(study, el = null)=>{
-            //     const infoBox = el ? el : this.U.s('#studyInfoBox')
-            //     const div = document.createElement('div')
-        
-            //     const name = study.shortName ?? study.nameId
-            //     const idNumber = '_'+study.id
-            //     infoBox.append(div)
-            //     div.id = `${study.nameId}_div`
-            //     div.dataset.action = `run-openStudySettings-${study.nameId}`
-            //     div.classList.add('actionBtn', 'infoBox', 'dontRun')
-            //     div.innerHTML = `
-            //         <p id="${study.nameId}_p" class="color1 dontRun" style="margin: 0 0 0 8px;">${name}</p>
-            //     `
-                
-            //     Object.keys(study.data).forEach(ind=>{
-            //         const p = document.createElement('p')
-            //         infoBox.querySelector(`#${study.nameId}_p`).after(p)
-            //         let val = study.data[ind].at(-1)
-            //         p.innerText = this.U.formatPrice(val)
-            //         p.classList.add('pdata', `${ind + idNumber}`, 'number', 'ml',  'dontRun')
-            //         !study.plots[ind].showPlot && p.classList.add('dn') //hide if showPLot is false
-            //         p.dataset.info = `{ "group": "${study.nameId}", "name": "${ind}" }`
-            //         p.style = `color: ${study.plots[ind].color}; margin: 0 0 0 8px;`
-            //         study.htmlEls[ind] = p
-            //     })
-                
-            //     infoBox.style.display = 'inline-flex'
-            //     this.U.handleBtn()
-            // },
             'ajustChartSizes':()=>{
                 //ajustChartSizes
                 const d = this.d
@@ -341,77 +296,6 @@ class CFchart {
                 this.container.append(div)
                 this.U.handleBtn()
             },
-            // 'createIndicator':(study)=>{
-            //     let count = Object.keys(this.indicators.list).filter(v => v.startsWith(study)).length;
-            //     const indicator = this.indicatorsFormulas[study]();
-            //     indicator['id'] = count + 1; 
-            //     indicator['nameId'] = `${study}_id_${indicator['id']}`;
-            //     this.U.addIndicator(indicator);
-            //     this.U.draw('createIndicator');
-            // },
-            // 'createLowerIndicatorCanvas':(indicator)=>{
-            //     const group = indicator.nameId
-            //     const minMax = Object.values(indicator.data).flat().reduce((acc, current) => {
-            //         return {
-            //             min: Math.min(acc.min, current ),
-            //             max: Math.max(acc.max, current )
-            //         };
-            //     }, { min: Infinity, max: -Infinity });
-        
-            //     this[`canvas_${group}`]={
-            //         'height':this.lower_chart_height, 
-            //         'getWidth':this.U.getWidth.bind({id:`canvas_${group}`,parent:this}),
-            //         'min':minMax.min,
-            //         'max':minMax.max
-            //     }
-            //     this[`canvas_${group}_yAxis`]={
-            //         'height':this.lower_chart_height,
-            //         'getWidth':this.U.getWidth.bind({id:`canvas_${group}_yAxis`, parent: this})
-            //     }
-        
-            //     const newRow = document.createElement('div')
-            //     newRow.id = `canvas_${group}_row`
-            //     newRow.innerHTML = `
-            //         <table>
-            //             <tr>
-            //                 <td class="min bd-r" style="padding: 0px;">
-            //                     <canvas id="canvas_${group}" class="chart resize wresize"></canvas>
-            //                 </td>
-            //                 <td><canvas id="canvas_${group}_yAxis" class="Y_chart"></canvas></td>
-            //             </tr>
-            //         </table>
-            //     `
-            //     const rows = this.U.s('#frame').children
-            //     this.U.s('#frame').children[rows.length-1].before(newRow)
-            //     newRow.classList.add('bd-t2')
-            //     const td = newRow.children[0]
-            //     td.style.position = 'relative'
-            //     const infoBox = document.createElement('div')
-            //     td.append(infoBox)
-        
-            //     this.U.addStudyInfoBox(indicator, infoBox)
-            //     infoBox.style = `
-            //         position:absolute; display:inline-flex; width:min-content; 
-            //         height:min-content; top:10px; left:10px; border-radius: 3px;
-            //     `
-            //     this[`canvas_${group}`].ctx = this.U.s(`#canvas_${group}`).getContext('2d')
-            //     this[`canvas_${group}_yAxis`].ctx = this.U.s(`#canvas_${group}_yAxis`).getContext('2d')
-            //     this.U.handleBtn()
-            // },
-            // 'createStudiesBtnEls':()=>{
-            //     this.indicatorsBtns = {}
-            //     for (let study of Object.keys(this.indicatorsFormulas)){
-            //         this.indicatorsBtns[study] = document.createElement('button')
-            //         this.indicatorsBtns[study].name = study
-            //         this.indicatorsBtns[study].classList.add('studies_btn','btn1')
-            //         this.indicatorsBtns[study].dataset.study_placement = "lower"
-            //         this.indicatorsBtns[study].innerText = study
-        
-            //         this.indicatorsBtns[study].addEventListener('click', ()=>{
-            //             this.U.createIndicator(study)
-            //         })
-            //     }
-            // },
             'createUpperInfoBox':()=>{
                 const infoBox = document.createElement('div')
                 this.U.s('#chart_div').append(infoBox)
@@ -443,13 +327,10 @@ class CFchart {
                     this.U.drawClouds()
                     this.inFrameCandles.forEach((val, idx )=>{
                         this.U.drawPlots({ i:idx, plot: { 'candleType':'candle', 'show':true, } })
-                        // this.U.drawIndicators(idx)
                     })
-                    // this.U.drawDashedLinePlots()
                     this.U.draw_X_axis()
                     this.U.draw_Y_axis()
                     this.U.drawCrossHair()
-                    // this.U.updateDataBoxes(this.d.candleIdx);
                     this.U.draw_x_axis_info()
                     this.U.draw_y_axis_info()
                 }
@@ -1143,78 +1024,6 @@ class CFchart {
                 }
                 return levels;
             },
-            // 'Obj': class Obj {
-            //     //Obj
-            //     constructor() {
-            //         this.list = {};
-            //         this.dic = {};
-            //         this.clouds = {};
-            //     }
-            
-            //     updatePlots() {
-            //         this.dic = {};
-            //         this.clouds = {};
-            //         for (let ind of Object.values(this.list)) {
-            //             for (let [key, val] of Object.entries(ind.data)) {
-            //                 this.dic[`${ind.nameId}_plot_${key}`] = {
-            //                     'color': ind.plots[key].color,
-            //                     'group': ind.nameId,
-            //                     'type': ind.plots[key].plotType,
-            //                     'plotWidth': ind.plots[key].plotWidth,
-            //                     'level': ind.inputs.level,
-            //                     'data': val,
-            //                     'show': ind.plots[key].showPlot,
-            //                     'ctx': ind.ctx
-            //                 };
-            //             }
-            //             if (ind.cloudInputs) {
-            //                 this.clouds[`${ind.nameId}_plot_cloud`] = {
-            //                     'group': ind.nameId,
-            //                     'type': 'cloud',
-            //                     'plotWidth': 1,
-            //                     'level': ind.inputs.level,
-            //                     'cloudValues': ind.cloudInputs.values,
-            //                     'show': ind.cloudInputs.showCloud,
-            //                     'ctx': ind.ctx
-            //                 };
-            //             }
-            //         }
-            //         this.updateOutputs()
-            //     }
-            
-            //     updateOutputs(){            
-            //         this.plots = Object.values(this.dic)
-            //         this.cloudPlots = Object.values(this.clouds)
-            //         this.regularPlots = Object.values(this.dic).filter(v => !['dashed-line', 'cloud'].some(type => v.type === type || v.type.startsWith(type)));
-            //         this.dashedLinePlots = Object.values(this.dic).filter(v => ['dashed-line'].some(type => v.type === type || v.type.startsWith(type)));
-            //         this.upperIndicators = Object.values(this.list).filter(v => v.inputs.level == 'upper');
-            //         this.lowerIndicators = Object.values(this.list).filter(v => v.inputs.level == 'lower');
-            //     }
-            
-            //     getPlotType(arr) {
-            //         return arr.flatMap(str => {
-            //             typeStr(str); 
-            //             return Object.values(this.dic).filter(v => {
-            //                 if (str[0] === '!') {
-            //                     const typeToExclude = str.slice(1);
-            //                     return !v.type.includes(typeToExclude);
-            //                 }
-            //                 return v.type.includes(str);
-            //             });
-            //         });
-            //     }
-            
-            //     getIndicatorType(criteria) {
-            //         const result = [];
-            //         for (const obj of Object.values(this.list)) {
-
-            //             if (obj.inputs.level && criteria.includes(obj.inputs.level)) {
-            //                 result.push(obj);
-            //             }
-            //         }
-            //         return result;
-            //     }
-            // },
             'getValueOrFallback':(obj, path, fallback) =>{
                 const keys = path.split('.');
                 let current = obj;
@@ -1376,35 +1185,6 @@ class CFchart {
                 ctx.stroke();
                 ctx.restore();
             },
-            // 'drawIndicators':(i)=>{
-            //     if(!this.indicators.regularPlots?.length){
-            //          return 
-            //         }
-            //     for(let val of this.indicators.regularPlots){
-            //         this.U.drawPlots({ i:i, plot:val })
-            //     }
-            // },
-            // 'drawLowerIndicatorYAxis':(group)=>{
-            //     const chartCanvas = this[`canvas_${group}`];
-            //     const yAxisCanvas = this[`canvas_${group}_yAxis`];
-            //     const chartCtx = chartCanvas.ctx;
-            //     const yAxisCtx = yAxisCanvas.ctx;
-            //     const levels = this.U.generateRoundedPriceLevels(chartCanvas.min, chartCanvas.max)
-            //     this.indicators.list[group]['yIntervals'] = levels
-            //     let chartMargin = this.indicators.list[group].chartMargin
-        
-            //     chartCtx.fillStyle = this.color.line;
-            //     yAxisCtx.font = `${this.font.size}px ${this.font.family}`;
-            //     yAxisCtx.fillStyle = 'white';
-            //     yAxisCtx.textBaseline = 'middle';
-        
-            //     levels.forEach(price =>{
-            //         let y = this.U.placeValue(price, this.lower_chart_height, chartCanvas.min, chartCanvas.max, chartMargin);
-            //         chartCtx.fillRect(0, y, chartCanvas.getWidth(), 1);
-            //         let value = this.U.formatNumber(this.U.formatPrice(price))
-            //         yAxisCtx.fillText(value, 5, y);
-            //     })
-            // },
             'drawPlots':(obj)=>{
                 const { plot, i } = obj;
                 const ctx = plot.ctx
@@ -2118,11 +1898,6 @@ class CFchart {
                     }) 
                 })
             },
-            // 'updateStudyLevel':(ind)=>{
-            //     this.U.removeStudy(ind.nameId ,{deleteData: false} )
-            //     this.U.addIndicator(ind)
-            //     this.U.ajustChartSizes()
-            // },
             'findValueByKey':(obj, keyToFind) =>{
                 // Check if the key exists in the current object
                 if (keyToFind in obj) {
@@ -2393,161 +2168,6 @@ class CFchart {
                     })
                 })
             },
-            // 'openStudySettings':(nameId)=>{
-            //     //open study
-            //     this.d.openedIndicator = nameId
-            //     this['dinamicDiv'].name = 'openStudySettings'
-            //     this['dinamicDiv'].style.display = 'flex'
-            //     this['dinamicDiv'].querySelector('.title').innerText = this.indicators.list[nameId].name
-            //     this['dinamicDiv'].querySelector('#divContent').innerHTML = ''
-        
-            //     const ind = this.indicators.list[nameId]
-                
-            //     let cloudSection = ''
-            //     if('cloudInputs' in ind){
-            //         let checked = ind.cloudInputs.showCloud ? 'checked' : ''
-        
-            //         const options = Object.keys(ind.plots).map(v=>{
-            //             return `<option value="${v}" >${this.U.splitBeforeUppercaseAndJoin(v)}</option>`
-            //         })
-                    
-            //         let vals = ind.cloudInputs.values.map(v=>this.U.setSelectedOption(options,v))
-        
-            //         cloudSection = `
-            //             <div class="df cloudInputDiv indicatorSettingsDiv">
-            //                 <h3 class="title color1 text1">Cloud Settings</h3>
-                            
-            //                 <form class="cloudForm df">
-            //                     <div class="df jcse settingsSecton">
-            //                         <label for="showCloud_input" class="color1 text1">Show Cloud</label>
-            //                         <input class="inputsType showCloud" type="checkbox" ${checked} id="showCloud_input" name="showCloud_input">
-            //                     </div>
-            //                     <div class="df jcse settingsSecton">
-            //                         <label for="cloudValues_input_1" class="color1">Values</label>
-            //                         <select class="cloudInput" id="cloudValues_input_1">${vals[0]}</select>
-            //                         <select class="cloudInput" id="cloudValues_input_2">${vals[1]}</select>
-            //                     </div>
-            //                     <div class="df jcse settingsSecton">
-            //                         <label for="cloudColor_1" class="color1">Colors</label>
-            //                         <div class="dropDown-btn actionBtn cloud-color" value="${ind.cloudInputs.colors[0]}" data-action="showColors" style="background-color:${ind.cloudInputs.colors[0]};"></div>
-            //                         <div class="dropDown-btn actionBtn cloud-color" value="${ind.cloudInputs.colors[1]}" data-action="showColors" style="background-color:${ind.cloudInputs.colors[1]};"></div>
-            //                     </div>
-            //                 </form>
-            //             </div>
-            //         `
-            //     }
-        
-            //     const colorOptions = Object.keys(this.color.list).reduce((accu, v)=>{
-            //         return accu + `<div class="menu-option-color" value="${this.color.list[v]}" style=" background-color:${this.color.list[v]}"></div>`
-            //     },'')
-            //     this['dinamicDiv'].querySelector('#divContent').innerHTML = `
-            //         <div class="df indicatorSettingsDiv inputDiv">
-            //             <h3 class="title color1 text1">Inputs</h3>
-            //             <form class="inputsForm df"></form>
-            //         </div>
-                    
-            //         <div class="df indicatorSettingsDiv">
-            //             <h3 class="title color1 text1">Style</h3>
-            //             <form class="stylesForm df"></form>
-            //         </div>
-            //         ${cloudSection}
-            //         <div class="dropDown-container hide_when_outside_click">
-            //             <div class="actionBtn" data-action="selectColor">
-            //                 ${colorOptions}
-            //             </div>
-            //         </div>
-            //     `
-        
-            //     //adding inputsForm content
-            //     for (let key of Object.keys(ind.inputs)){
-            //         let formattedName = this.U.splitBeforeUppercaseAndJoin(key)
-            //         let innerHtml = `
-            //             <div class="df jcse settingsSecton" >
-            //                 <label for="${key}_input" class="color1">${this.U.capitalize(formattedName)}</label>
-            //                 <input class="inputsType" type="number" id="${key}_input" name="${key}_input" value="${ind.inputs[key]}">
-            //             </div>
-            //         `
-            //         if(key == 'priceType' || key == 'level'){
-            //             let clas = key == 'level' ? '': 'inputsType'
-            //             let data = this.U.findValueByKey(ind, key)
-            //             let options = this.U.setSelectedOption(this.plotOptions[key], data)
-                        
-            //             innerHtml = `
-            //                 <div class="df jcse settingsSecton">
-            //                     <label for="${key}_input" class="color1">${this.U.capitalize(formattedName)}</label>
-            //                     <select class="${clas}" id="${key}_input" name="${key}_input" >${options}</select>
-            //                 </div>
-            //             `
-            //         }
-            //         if(key == 'MovAvgType'){
-            //             const movAvgOptions = ['SMA','EMA'].map(v=>{ return `<option value="${v}" >${v}</option>` })
-            //             let vals = this.U.setSelectedOption(movAvgOptions, ind.inputs.MovAvgType)
-            //             innerHtml = `
-            //                 <div class="df jcse settingsSecton" >
-            //                     <label for="${key}_input" class="color1">${this.U.capitalize(formattedName)}</label>
-            //                     <select class="inputsType" id="${key}_input" name="${key}_input" >${vals}</select>
-            //                 </div>
-            //             `
-            //         }
-        
-            //         this['dinamicDiv'].querySelector('.inputsForm').innerHTML += innerHtml
-            //     }
-        
-            //     // setting inputs elements to indicators values
-            //     this['dinamicDiv'].querySelectorAll('.inputsForm .inputsType').forEach(el=>{
-            //         const name = el.name.split('_')[0]
-            //         const priceType = ind.inputs[name]
-            //         if(el.type === 'checkbox'){ el.checked = priceType }
-        
-            //         el.querySelectorAll('option').forEach(op=>{
-            //             if(op.value == priceType){ op.setAttribute('selected', true); }
-            //         })
-            //     })
-        
-            //     //style innerHtml
-            //     for(let k of Object.keys(ind.plots)){
-            //         let formattedName = this.U.splitBeforeUppercaseAndJoin(k)
-            //         let val = ind.plots[k].plotType
-            //         let plotOptions = this.U.setSelectedOption(this.plotOptions['plotType'], val)
-            //         this['dinamicDiv'].querySelector('.stylesForm').innerHTML += `
-            //             <div class="df settingsSecton" >
-            //                 <div class="df">
-            //                     <input class="showPlot" type="checkbox" name="${k}" >
-            //                     <label for="${k}_color" style="color: ${this.color.textColor1}">${formattedName}:</label>
-            //                     <div class="dropDown-btn menu-color actionBtn" name="${k}" value="${ind.plots[k].color}" data-action="showColors" style="background-color:${ind.plots[k].color};"></div>
-            //                     <select id="${k}_select" class="styleType plotType" name="${k}" >${plotOptions}</select>
-            //                 </div>
-            //                 <div class="df">
-            //                     <label for="${k}_thickness" class="color1">Thickness:</label>
-            //                     <select id="${k}_thickness" name="${k}" class="styleType plotWidth">
-            //                         <option value="1">1</option>
-            //                         <option value="2">2</option>
-            //                         <option value="3">3</option>
-            //                         <option value="4">4</option>
-            //                     </select>
-            //                 </div>
-            //             </div>
-            //         `
-            //     }
-        
-            //     this['dinamicDiv'].querySelectorAll('.stylesForm .showPlot').forEach(el=>{
-            //         const name = el.name
-            //         if(ind.plots[name].showPlot){el.setAttribute('checked', true)}
-            //     })
-                
-            //     //prevent default for input tags so that the window doesnt close when enter is tapped
-            //     this['dinamicDiv'].querySelectorAll('input').forEach(el=>{
-            //         el.addEventListener('keydown',(ev)=>{
-            //             if (ev.key === 'Enter') { ev.preventDefault(); }
-            //         })
-            //     })
-        
-            //     this['dinamicDiv'].querySelector('#cancel-btn').innerText = 'Remove'
-            //     this['dinamicDiv'].querySelector('#cancel-btn')
-            //     .setAttribute('data-action', `run-removeStudy-${nameId} run-ajustChartSizes closeDinamicDiv`);
-            //     this['dinamicDiv'].style.display = 'block'
-            //     this.U.handleBtn()
-            // },
             'placeValuePercentage':(value, chart_height, min, max, margin) =>{
                 chart_height = chart_height || this.chart_height
                 min = min || this.newMin
@@ -2598,18 +2218,6 @@ class CFchart {
                     d.debounceCount +=1
                 };
             },
-            // 'removeStudy':(data, obj={deleteData: true})=>{
-            //     const ind = this.indicators.list[data]
-            //     if(obj.deleteData){delete this.indicators.list[data]}
-            //     this.U.s('#studyInfoBox').querySelectorAll(`#${data}_div`).forEach(el=>el.remove())
-            //     if(this.U.s('#studyInfoBox').children.length == 0) {this.U.s('#studyInfoBox').style.display = 'none'}
-            //     this.U.s(`#frame`).querySelectorAll(`#canvas_${ind.nameId}_row`).forEach(el=>el.remove())
-            //     delete this[`canvas_${ind.nameId}`]
-            //     delete this[`canvas_${ind.nameId}_xAxis`]
-            //     delete this[`canvas_${ind.nameId}_yAxis`]
-            //     this.indicators.updatePlots()
-            //     this.U.draw('removeStudy')
-            // },
             's':(e)=>{
                 if(e.split('')[0]=='#'){return this.container.querySelector(e)}
                 else{return this.container.querySelectorAll(e)}
@@ -3356,8 +2964,6 @@ class CFchart {
         }
         this.U = utilities
     }
-
-    logInfo(){console.log(this)}
 }
 
 new CFchart(document.querySelector('#CFChart'))
