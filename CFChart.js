@@ -2944,13 +2944,6 @@ class CFchart {
                         return
                     }
         
-                    // if indicator
-                    // if(clas[0] !='_'){
-                    //     const info = JSON.parse(el.getAttribute('data-info'))
-                    //     let data = this.U.formatPrice(this.indicators.list[info.group].data[info.name][idx])
-                    //     data = data == null ? '-- --' : data
-                    //     el.innerText = data
-                    // }
                     clas = clas[0] == "_" ? clas.slice(1) : clas
                     if(this.ohlc[clas]){
                         let n = this.ohlc[clas][idx]+''
