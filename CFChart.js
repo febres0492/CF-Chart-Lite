@@ -2945,19 +2945,17 @@ class CFchart {
                     }
         
                     // if indicator
-                    if(clas[0] !='_'){
-                        const info = JSON.parse(el.getAttribute('data-info'))
-                        let data = this.U.formatPrice(this.indicators.list[info.group].data[info.name][idx])
-                        data = data == null ? '-- --' : data
-                        el.innerText = data
-                    }
+                    // if(clas[0] !='_'){
+                    //     const info = JSON.parse(el.getAttribute('data-info'))
+                    //     let data = this.U.formatPrice(this.indicators.list[info.group].data[info.name][idx])
+                    //     data = data == null ? '-- --' : data
+                    //     el.innerText = data
+                    // }
                     clas = clas[0] == "_" ? clas.slice(1) : clas
                     if(this.ohlc[clas]){
                         let n = this.ohlc[clas][idx]+''
                         n = n.includes('.') ? (+n).toFixed(2) : +n
                         el.innerText = n
-                        // let attr = JSON.parse(el.getAttribute('data-info'))
-                        // el.style.color = attr ? this.studies[attr.group][attr.name]['color'] : this.candles[idx].color
                     }
                 })
             },
