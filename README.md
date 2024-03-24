@@ -3,6 +3,8 @@
 
 CF Chart is a charting library inspired by TradingView
 
+![CF Chart preview](./cf-chart-lite.png)
+
 ### Link
 https://cf-chart-lite.netlify.app/
 
@@ -10,7 +12,7 @@ https://cf-chart-lite.netlify.app/
 
 - **Interactive Charting**: Dynamically zoom, pan, and scale charts to view stock data at various resolutions from years down to minutes.
 
-- **Double tap and drag zoom**: Double tap and drag zoom on the screen hold on the second tap and drag to zoom.
+- **Double tap and drag zoom**: quickly double-tap but hold your finger down on the second tap. Then, slide your finger down to zoom in or up to zoom out.
 
 - **Pinch zoom**: Pinch with two fingers to zoom.
 
